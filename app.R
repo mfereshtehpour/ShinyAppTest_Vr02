@@ -3,8 +3,8 @@
 library(shiny)
 library(leaflet)
 library(terra)
-# library(sf)
-# library(raster)
+library(sf)
+library(raster)
 
 
 ui <- fluidPage(

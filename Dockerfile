@@ -23,12 +23,15 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libtiff5-dev \
     libjpeg-dev \
+    build-essential \
+    cmake \
+    pkg-config \
     && apt-get clean
 
     
     
 # Install R packages needed by the app
-RUN R -e "install.packages(c('shiny', 'leaflet', 'terra'), dependencies = TRUE, repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shiny', 'leaflet', 'terra', "raster", "sf"), dependencies = TRUE, repos='https://cloud.r-project.org/')"
 
 #RUN install2.r --error shiny 
 
