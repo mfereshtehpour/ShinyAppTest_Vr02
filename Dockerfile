@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     
     
 # Install R packages needed by the app
-RUN R -e "install.packages(c('shiny', 'leaflet'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shiny', 'leaflet', 'raster', 'sf', 'terra'), repos='https://cloud.r-project.org/')"
 
 #RUN install2.r --error shiny 
 

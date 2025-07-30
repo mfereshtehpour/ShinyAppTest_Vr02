@@ -2,6 +2,10 @@
 
 library(shiny)
 library(leaflet)
+library(terra)
+library(sf)
+library(raster)
+
 
 ui <- fluidPage(
   titlePanel("Hello from Heroku!"),
