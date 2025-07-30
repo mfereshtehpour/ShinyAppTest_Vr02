@@ -38,7 +38,7 @@ ENV PATH="${JAVA_HOME}/bin:${PATH}"
 RUN R -e "install.packages(c( \
                       'shiny', 'leaflet', 'terra', 'raster', 'sf', 'mapview', 'leafpop', 'RColorBrewer', \
                      'tidyr', 'dplyr', 'DT', 'htmltools', 'stringr', 'shinyWidgets', 'stars', 'shinybusy' \
-                      ), dependencies = TRUE, repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores(), type = "binary")"
+                      ), dependencies = TRUE, repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
 #RUN install2.r --error shiny 
 
