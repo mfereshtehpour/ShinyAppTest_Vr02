@@ -36,16 +36,6 @@ RUN R -e "install.packages(c( \
                      'tidyr', 'dplyr', 'DT', 'htmltools', 'stringr', 'shinyWidgets', 'stars', 'shinybusy' \
                       ), dependencies = TRUE, repos = 'https://cloud.r-project.org/')"
 
-library(RColorBrewer)
-library(tidyr)
-library(dplyr)
-library(DT)
-library(htmltools)
-library(stringr)
-library(shinyWidgets)
-library(stars)
-library(shinybusy)
-
 #RUN install2.r --error shiny 
 
 # Copy your app files
