@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
     libgdal-dev \
     libgeos-dev \
     libproj-dev \
+    libtbb-dev \
+    libnetcdf-dev \
     libglpk-dev \
     libssl-dev \
     libcurl4-openssl-dev \
