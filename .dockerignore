@@ -1,0 +1,4 @@
+*.git
+*.Rproj
+.DS_Store
+README.md
