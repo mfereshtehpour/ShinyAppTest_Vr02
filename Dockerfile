@@ -1,5 +1,5 @@
 # Use a minimal R base image instead of rocker/shiny (which uses s6-overlay)
-FROM rocker/shiny:latest
+FROM rocker/shiny:4.5.1
 
 
 # Install system dependencies
@@ -23,18 +23,27 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libtiff5-dev \
     libjpeg-dev \
+    default-jdk \
     build-essential \
     cmake \
     pkg-config \
     && apt-get clean
 
-    
+
+# Install OpenJDK (Java) for rJava
+RUN apt-get update && apt-get install -y \
+    default-jdk \
+    && apt-get clean
+
+# Set JAVA_HOME (helps R find the headers and JVM libs)
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ENV PATH="${JAVA_HOME}/bin:${PATH}"   
     
 # Install R packages needed by the app
 RUN R -e "install.packages(c( \
                       'shiny', 'leaflet', 'terra', 'raster', 'sf', 'mapview', 'leafpop', 'RColorBrewer', \
                      'tidyr', 'dplyr', 'DT', 'htmltools', 'stringr', 'shinyWidgets', 'stars', 'shinybusy' \
-                      ), dependencies = TRUE, repos = 'https://cloud.r-project.org/')"
+                      ), dependencies = c('Depends', 'Imports'), repos = 'https://cloud.r-project.org/', INSTALL_opts = c('--no-install-recommends'))"
 
 #RUN install2.r --error shiny 
 
