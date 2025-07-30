@@ -5,6 +5,8 @@ library(leaflet)
 library(terra)
 library(sf)
 library(raster)
+library(mapview)
+library(leafpop)
 
 
 ui <- fluidPage(
