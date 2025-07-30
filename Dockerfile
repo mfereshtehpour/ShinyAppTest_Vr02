@@ -3,9 +3,26 @@ FROM rocker/shiny:latest
 
 
 # Install system dependencies
+# Install Linux dependencies for spatial packages
 RUN apt-get update && apt-get install -y \
-    libudunits2-dev libgdal-dev libgeos-dev libproj-dev libv8-dev \
-    libcurl4-openssl-dev libssl-dev libxml2-dev libglpk-dev gdebi-core
+    libudunits2-dev \
+    libgdal-dev \
+    libgeos-dev \
+    libproj-dev \
+    libglpk-dev \
+    libssl-dev \
+    libcurl4-openssl-dev \
+    libxml2-dev \
+    libsqlite3-dev \
+    libfontconfig1-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    libfreetype6-dev \
+    libpng-dev \
+    libtiff5-dev \
+    libjpeg-dev \
+    && apt-get clean
+
     
     
 # Install R packages needed by the app
