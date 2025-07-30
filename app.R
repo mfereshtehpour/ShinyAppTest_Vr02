@@ -7,6 +7,15 @@ library(sf)
 library(raster)
 library(mapview)
 library(leafpop)
+library(RColorBrewer)
+library(tidyr)
+library(dplyr)
+library(DT)
+library(htmltools)
+library(stringr)
+library(shinyWidgets)
+library(stars)
+library(shinybusy)
 
 
 ui <- fluidPage(

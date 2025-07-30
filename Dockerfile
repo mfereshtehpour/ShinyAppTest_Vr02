@@ -31,7 +31,20 @@ RUN apt-get update && apt-get install -y \
     
     
 # Install R packages needed by the app
-RUN R -e "install.packages(c('shiny', 'leaflet', 'terra', 'raster', 'sf', 'mapview', 'leafpop'), dependencies = TRUE, repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c( \
+                      'shiny', 'leaflet', 'terra', 'raster', 'sf', 'mapview', 'leafpop', 'RColorBrewer', \
+                     'tidyr', 'dplyr', 'DT', 'htmltools', 'stringr', 'shinyWidgets', 'stars', 'shinybusy' \
+                      ), dependencies = TRUE, repos = 'https://cloud.r-project.org/')"
+
+library(RColorBrewer)
+library(tidyr)
+library(dplyr)
+library(DT)
+library(htmltools)
+library(stringr)
+library(shinyWidgets)
+library(stars)
+library(shinybusy)
 
 #RUN install2.r --error shiny 
 
