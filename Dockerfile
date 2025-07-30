@@ -30,11 +30,6 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 
-# Install OpenJDK (Java) for rJava
-RUN apt-get update && apt-get install -y \
-    default-jdk \
-    && apt-get clean
-
 # Set JAVA_HOME (helps R find the headers and JVM libs)
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 ENV PATH="${JAVA_HOME}/bin:${PATH}"   
@@ -43,7 +38,7 @@ ENV PATH="${JAVA_HOME}/bin:${PATH}"
 RUN R -e "install.packages(c( \
                       'shiny', 'leaflet', 'terra', 'raster', 'sf', 'mapview', 'leafpop', 'RColorBrewer', \
                      'tidyr', 'dplyr', 'DT', 'htmltools', 'stringr', 'shinyWidgets', 'stars', 'shinybusy' \
-                      ), dependencies = c('Depends', 'Imports'), repos = 'https://cloud.r-project.org/', INSTALL_opts = c('--no-install-recommends'))"
+                      ), dependencies = TRUE, repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores(), type = "binary")"
 
 #RUN install2.r --error shiny 
 
