@@ -1,28 +1,17 @@
 # Use a minimal R base image instead of rocker/shiny (which uses s6-overlay)
-FROM rocker/r-ver:4.3.1
+FROM rocker/shiny:latest
 
-# Install required system dependencies
+
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    gdebi-core \
-    libudunits2-dev \
-    libgdal-dev \
-    libgeos-dev \
-    libproj-dev \
-    libv8-dev \
-    libcurl4-openssl-dev \
-    libssl-dev \
-    libxml2-dev \
-    pandoc \
-    wget \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install Shiny Server manually
-RUN wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.16.958-amd64.deb && \
-    gdebi -n shiny-server-1.5.16.958-amd64.deb && \
-    rm shiny-server-1.5.16.958-amd64.deb
-
+    libudunits2-dev libgdal-dev libgeos-dev libproj-dev libv8-dev \
+    libcurl4-openssl-dev libssl-dev libxml2-dev libglpk-dev gdebi-core
+    
+    
 # Install R packages needed by the app
 RUN R -e "install.packages(c('shiny', 'leaflet'), repos='https://cloud.r-project.org/')"
+
+#RUN install2.r --error shiny 
 
 # Copy your app files
 COPY . /srv/shiny-server/
